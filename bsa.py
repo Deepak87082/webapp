@@ -20,12 +20,10 @@ class BsaBot():
         pop_up = self.driver.find_element_by_xpath('/html/body/div[7]/div[1]/a/span')
         pop_up.click()
         present = self.driver.find_element_by_xpath('//*[local-name() = "svg"]/*/*/*/*[name()="tspan"][2]').text.split(' ')
-        #//*[@id="highcharts-0"]/svg/g[2]/g[1]/text/tspan[1]')
-        self.driver.close()
-        abs=100-float(present[1])
+        abst=self.driver.find_element_by_xpath('//*[local-name() = "svg"]/*/*[name()="g"][2]/*/*[name()="tspan"][2]').text.split(' ')   
         print('present: '+present[1]+' %')
-        print('Absent: '+str(round(abs,2))+' %')
-
+        print('Absent: '+abst[1]+' %') 
+        self.driver.close()
 
 bot = BsaBot()
 bot.login()
