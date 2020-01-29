@@ -1,9 +1,13 @@
 from selenium import webdriver
 from time import sleep
 from passs import usr,password
+from selenium.webdriver.chrome.options import Options
+
 class BsaBot():
     def __init__(self):
-        self.driver = webdriver.Chrome()
+        options = Options()
+        options.add_argument("--headless")
+        self.driver = webdriver.Chrome(options=options)
     def login(self):
         self.driver.get('http://ais.univnext.com/Index')
         email = self.driver.find_element_by_xpath('//*[@id="username"]')
@@ -15,7 +19,6 @@ class BsaBot():
         sleep(2)
         pop_up = self.driver.find_element_by_xpath('/html/body/div[7]/div[1]/a/span')
         pop_up.click()
-        #sleep(5)
         present = self.driver.find_element_by_xpath('//*[local-name() = "svg"]/*/*/*/*[name()="tspan"][2]').text.split(' ')
         #//*[@id="highcharts-0"]/svg/g[2]/g[1]/text/tspan[1]')
         self.driver.close()
