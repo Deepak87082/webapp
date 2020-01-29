@@ -1,8 +1,6 @@
 from selenium import webdriver
 from time import sleep
-usr = '17/cs08'
-password = 'Dk950046'
-
+from passs import usr,password
 class BsaBot():
     def __init__(self):
         self.driver = webdriver.Chrome()
